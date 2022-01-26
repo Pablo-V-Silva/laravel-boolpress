@@ -6,3 +6,11 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+.userNav {
+    z-index: 101;
+    position: relative;
+    width: 83.35%;
+    margin-left: auto;
+}

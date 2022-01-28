@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="dataProducts">
+    <div class="dataPosts">
 
-        <h1>Products :</h1>
+        <h1>Posts :</h1>
 
         @if (session('message'))
             <div class="alert alert-success my_alert position-absolute">
@@ -12,7 +12,7 @@
         @endif
 
 
-        <a class="btn btn-primary" href="{{ route('admin.products.create') }}">
+        <a class="btn btn-primary" href="{{ route('admin.posts.create') }}">
             <i class="fas fa-plus-square fs-2 text-white pt-1"></i>
         </a>
 
@@ -21,20 +21,22 @@
             <thead>
                 <tr>
                     <th>id</th>
-                    <th>name</th>
-                    <th>price</th>
+                    <th>account name</th>
+                    <th>post</th>
                     <th>action</th>
 
                 </tr>
             </thead>
             <tbody>
 
-                @foreach ($products as $product)
+                @foreach ($posts as $post)
                     <tr>
 
-                        <td scope="row">{{ $product->id }}</td>
-                        <td>{{ $product->name }}</td>
-                        <td>{{ $product->price }}</td>
+                        <td scope="row">{{ $post->id }}</td>
+                        <td>{{ $post->accountName }}</td>
+                        <td>{{ $post->text }}</td>
+
+
                         <td>
 
                             View

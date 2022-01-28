@@ -26,4 +26,5 @@ Route::namespace('admin')->prefix('admin')->name('admin.')->middleware('auth')->
   Route::get('/', 'HomeController@index')->name('dashboard');
 
   Route::resource('products', 'ProductController');
+  Route::resource('posts', 'PostController');
 });

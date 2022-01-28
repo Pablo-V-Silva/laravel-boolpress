@@ -3,6 +3,7 @@
 use App\Models\Post;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 class PostSeeder extends Seeder
 {
@@ -20,6 +21,7 @@ class PostSeeder extends Seeder
       $post->accountName = $faker->word();
       $post->text = $faker->paragraph(2, true);
       $post->image = $faker->imageUrl(200, 200);
+      $post->slug = Str::slug($post->accountName);
       $post->save();
     }
   }

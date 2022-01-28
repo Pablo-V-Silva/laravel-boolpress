@@ -16,30 +16,35 @@
             @csrf
 
             <div>
-                <label for="name" class="form-label">Name</label>
-                <input placeholder="Add Name" type="text" class="form-control" name="name" id="name"
-                    aria-describedby="helpName" placeholder="Name" value="{{ old('name') }}" required>
+                <label for="accountName" class="form-label">account name</label>
+                <input placeholder="Add Name" type="text" class="form-control" name="accountName" id="accountName"
+                    aria-describedby="helpName" placeholder="Name" value="{{ old('accountName') }}" required>
                 <small id="helpName" class="form-text text-muted">Add name on your post</small>
             </div>
 
             <div>
-                <label for="desc" class="form-label">Description</label>
-                <input placeholder="Add Descpription" type="text" class="form-control" name="desc" id="desc"
-                    aria-describedby="helpDesc" placeholder="Description" value="{{ old('desc') }}">
-                <small id="helpDesc" class="form-text text-muted">Add Desc on your post</small>
+                <label for="text" class="form-label">text</label>
+                <textarea placeholder="Add text" type="text" class="form-control" name="text" id="text"
+                    aria-describedby="helpName" placeholder="text" value="{{ old('text') }}"></textarea>
+                <small id="helpName" class="form-text text-muted">Add text on your post</small>
             </div>
-            <div>
-                <label for="image" class="form-label">Image</label>
-                <input placeholder="Add Image" type="text" class="form-control" name="image" id="image"
-                    aria-describedby="helpDesc" placeholder="Add url link" value="{{ old('image') }}">
-                <small id="helpDesc" class="form-text text-muted">Add Image on your post</small>
+
+            <div class="form-group">
+                <label for="category_id">Categories</label>
+                <select class="form-control" name="category_id" id="category_id">
+                    <option selected disabled>Select a category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                    ​
+                </select>
             </div>
 
             <div>
-                <label for="price" class="form-label">Price</label>
-                <input placeholder="Add Price" type="text" class="form-control" name="price" id="price"
-                    aria-describedby="helpDesc" placeholder="Add url link" value="{{ old('price') }}">
-                <small id="helpDesc" class="form-text text-muted">Add Image on your post</small>
+                <label for="image" class="form-label">image</label>
+                <input placeholder="Add image" type="text" class="form-control" name="image" id="image"
+                    aria-describedby="helpName" placeholder="image" value="{{ old('image') }}">
+                <small id="helpName" class="form-text text-muted">Add image on your post</small>
             </div>
 
             <button name="" id="" class="btn btn-primary" href="" type="submit">Save</button>

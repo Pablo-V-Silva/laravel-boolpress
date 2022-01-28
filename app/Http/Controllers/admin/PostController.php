@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -27,7 +29,7 @@ class PostController extends Controller
   public function create()
   {
     //
-    return view('admin.posts.create');
+    return view('admin.posts.create', ['categories' => Category::all()]);
   }
 
   /**
@@ -38,12 +40,17 @@ class PostController extends Controller
    */
   public function store(Request $request)
   {
-    //
+    //ddd($request->all());
+
     $validateData = $request->validate([
       'accountName' => 'required',
       'text' => 'nullable',
       'image' => 'nullable',
+      'category_id' => 'nullable|exists:categories,id',
     ]);
+
+
+    $validateData['slug'] = Str::slug($validateData['accountName']);
 
     Post::create($validateData);
 

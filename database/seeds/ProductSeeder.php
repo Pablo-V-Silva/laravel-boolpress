@@ -19,7 +19,7 @@ class ProductSeeder extends Seeder
       $prod = new Product();
       $prod->name = $faker->sentence();
       $prod->desc = $faker->paragraph(2, true);
-      $prod->image = $faker->imageUrl(200, 200, 'product', true);
+      $prod->image = $faker->imageUrl(200, 200);
       $prod->price = $faker->randomFloat(2, 1000, 2000);
       $prod->save();
     }

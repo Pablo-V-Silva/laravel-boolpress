@@ -13,11 +13,20 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td scope="row">{{}}</td>
-                <td>{{}}</td>
-                <td>{{}}</td>
-            </tr>
+
+            @foreach ($products as $product)
+                <tr>
+
+                    <td scope="row">{{ $product->id }}</td>
+                    <td>{{ $product->name }}</td>
+                    <td>{{ $product->price }}</td>
+                    <td>
+
+                        View - Edit - Delete
+
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 

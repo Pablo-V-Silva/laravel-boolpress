@@ -3,6 +3,18 @@
 @section('content')
     <h1>Products :</h1>
 
+    @if (session('message'))
+        <div class="alert alert-success my_alert position-absolute">
+            {{ session('message') }}
+        </div>
+    @endif
+
+
+    <a class="btn btn-primary" href="{{ route('admin.products.create') }}">
+        <i class="fas fa-plus-square fs-2 text-white pt-1"></i>
+    </a>
+
+
     <table class="table">
         <thead>
             <tr>
@@ -10,6 +22,7 @@
                 <th>name</th>
                 <th>price</th>
                 <th>action</th>
+
             </tr>
         </thead>
         <tbody>
@@ -22,7 +35,11 @@
                     <td>{{ $product->price }}</td>
                     <td>
 
-                        View - Edit - Delete
+                        View
+
+                        - Edit -
+
+                        Delete
 
                     </td>
                 </tr>

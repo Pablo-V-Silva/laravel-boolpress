@@ -16,7 +16,7 @@ class ProductController extends Controller
   public function index()
   {
 
-    return view('admin.products.index', ['products' => Product::all()]);
+    return view('admin.products.index', ['products' => Product::all()->sortDesc()]);
   }
 
   /**
@@ -26,7 +26,7 @@ class ProductController extends Controller
    */
   public function create()
   {
-    //
+    return view('admin.products.create');
   }
 
   /**
@@ -37,7 +37,16 @@ class ProductController extends Controller
    */
   public function store(Request $request)
   {
-    //
+    $validateData = $request->validate([
+      'name' => 'required',
+      'desc' => 'nullable',
+      'image' => 'nullable',
+      'price' => 'nullable',
+    ]);
+
+    Product::create($validateData);
+
+    return redirect()->route('admin.products.index')->with('message', 'You Created your Prod, GG BROO :D');
   }
 
   /**

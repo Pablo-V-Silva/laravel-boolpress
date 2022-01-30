@@ -11253,3 +11253,7 @@ textarea.form-control-lg {
   width: 83.35%;
   margin-left: auto;
 }
+
+.myImage {
+  width: 100px !important;
+}

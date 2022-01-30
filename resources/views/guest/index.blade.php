@@ -20,16 +20,18 @@
             <div class="row row-cols-5">
                 @foreach ($products as $product)
                     <div class="col">
-                        <div class="card">
+                        <a href="{{ route('guest.show', ['id' => $product->id, 'type' => 'product']) }}">
+                            <div class="card">
 
-                            <img class="card-img-top" src="{{ $product->image }}" alt="">
-                            <div class="card-body">
-                                <h4 class="card-title">{{ $product->name }}</h4>
-                                <p class="card-text">{{ $product->desc }}</p>
-                                <div class="price">{{ $product->price }}</div>
+                                <img class="card-img-top" src="{{ $product->image }}" alt="">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ $product->name }}</h4>
+                                    <p class="card-text">{{ $product->desc }}</p>
+                                    <div class="price">{{ $product->price }}</div>
+                                </div>
+
                             </div>
-
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             </div>
@@ -44,16 +46,18 @@
             <div class="row row-cols-5">
                 @foreach ($posts as $post)
                     <div class="col">
-                        <div class="card">
+                        <a href="{{ route('guest.show', ['id' => $post->id, 'type' => 'post']) }}">
+                            <div class="card">
 
-                            <img class="card-img-top" src="{{ $post->image }}" alt="">
-                            <div class="card-body">
-                                <h4 class="card-title">{{ $post->accountName }}</h4>
-                                <p class="card-text">{{ $post->text }}</p>
+                                <img class="card-img-top" src="{{ $post->image }}" alt="">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ $post->accountName }}</h4>
+                                    <p class="card-text">{{ $post->text }}</p>
+
+                                </div>
 
                             </div>
-
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             </div>

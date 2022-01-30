@@ -15,7 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'GuestController@index')->name('guest.index');
+Route::get('/', 'GuestController@index')->name('guest.home');
+Route::get('show/{type}/{id}', 'GuestController@show')->name('guest.show');
+
+
 
 //Route::resource('products', 'ProductController')->only('index', 'show')->name('guest.products');
 
@@ -23,7 +26,7 @@ Route::get('/', 'GuestController@index')->name('guest.index');
 Auth::routes();
 
 Route::namespace('admin')->prefix('admin')->name('admin.')->middleware('auth')->group(function () {
-  Route::get('/', 'HomeController@index')->name('dashboard');
+  Route::get('dashboard', 'HomeController@index')->name('dashboard');
 
   Route::resource('products', 'ProductController');
   Route::resource('posts', 'PostController');

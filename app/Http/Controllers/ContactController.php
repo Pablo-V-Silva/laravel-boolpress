@@ -26,14 +26,16 @@ class ContactController extends Controller
       'email' => 'required|email',
       'message' => 'required|min:10|max:500'
     ]);
-    //ddd($request);
+
+    // ddd($valData);
+
     $contact = Contact::create($valData);
 
     $this->sendEmail($contact);
 
 
 
-    //return (new SendContactFormMail($valData))->render();
+    // return (new SendContactFormMail($valData))->render();
     //Mail::to('admin@example.com')->send(new SendContactFormMail($valData));
 
 

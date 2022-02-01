@@ -22,7 +22,7 @@ class MarkdowContactFormMail extends Mailable
   public function __construct(Contact $contact)
   {
     //
-    $this->data = $contact;
+    $this->contact = $contact;
   }
 
   /**

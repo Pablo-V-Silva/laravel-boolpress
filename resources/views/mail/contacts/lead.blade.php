@@ -11,11 +11,11 @@
 <body>
     <h1>You have a new Lead!</h1>
 
-    <dl>
-        <dd>Name: {{ $contact['name'] }}</dd>
-        <dd>Email: {{ $contact['email'] }}</dd>
+    <p>
+        <em>Name: {{ $contact['name'] }}</em>
+        <em>Email: {{ $contact['email'] }}</em>
 
-    </dl>
+    </p>
     <div class="message">
         {{ $contact['message'] }}
     </div>

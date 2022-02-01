@@ -41,6 +41,18 @@
                 </select>
             </div>
 
+            <div class="form-group">
+                <label for="tags">Tags</label>
+                <select class="form-control" name="tags" id="tags" multiple>
+                    <option selected disabled>Select Tag</option>
+                    @foreach ($tags as $tag)
+
+                        <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
+                    @endforeach
+                    ​
+                </select>
+            </div>
+
             <div>
                 <label for="image" class="form-label">image</label>
                 <input placeholder="Add image" type="text" class="form-control" name="image" id="image"

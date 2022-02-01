@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -29,7 +31,9 @@ class PostController extends Controller
   public function create()
   {
     //
-    return view('admin.posts.create', ['categories' => Category::all()]);
+    $categories = Category::all();
+    $tags = Tag::all();
+    return view('admin.posts.create', compact('categories', 'tags'));
   }
 
   /**
@@ -52,8 +56,20 @@ class PostController extends Controller
 
     $validateData['slug'] = Str::slug($validateData['accountName']);
 
-    Post::create($validateData);
+    $validateData['user_id'] = Auth::id();
 
+    $post = Post::create($validateData);
+
+    if ($request->has('tags')) {
+      # code...
+      $request->validate(
+        [
+          'tags' => ['nullable', 'exists:tags,id']
+        ]
+      );
+      $post->tags()->attach($request->tags);
+    }
+    ddd($validateData);
     return redirect()->route('admin.posts.index')->with('message', 'You Created your Prod, GG BROO :D');
   }
 

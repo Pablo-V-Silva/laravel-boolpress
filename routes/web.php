@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'GuestController@index')->name('guest.home');
 Route::get('show/{type}/{id}', 'GuestController@show')->name('guest.show');
 
+Route::get('contacts', 'ContactController@show_contact_page')->name('contacts');
+Route::post('contacts', 'ContactController@store')->name('contacts.send');
 
 
 //Route::resource('products', 'ProductController')->only('index', 'show')->name('guest.products');
@@ -30,4 +32,5 @@ Route::namespace('admin')->prefix('admin')->name('admin.')->middleware('auth')->
 
   Route::resource('products', 'ProductController');
   Route::resource('posts', 'PostController');
+  Route::resource('contacts', ContactController::class)->only('index', 'show', '');
 });
